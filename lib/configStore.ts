@@ -1,9 +1,11 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
+import * as os from 'os';
 import type { APIKeyConfig, APIKeyInput, Provider } from './types';
 
-const CONFIG_DIR  = path.join(process.cwd(), 'config');
+const IS_PROD = process.env.NODE_ENV === 'production' || process.env.VERCEL === '1';
+const CONFIG_DIR  = IS_PROD ? os.tmpdir() : path.join(process.cwd(), 'config');
 const CONFIG_FILE = path.join(CONFIG_DIR, 'keys.json');
 
 function ensureDir() {
