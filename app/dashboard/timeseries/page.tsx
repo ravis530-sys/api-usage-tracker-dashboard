@@ -29,7 +29,6 @@ export default function TimeSeriesPage() {
     openai: p.provider_breakdown['openai'] ?? 0,
     anthropic: p.provider_breakdown['anthropic'] ?? 0,
     github: p.provider_breakdown['github'] ?? 0,
-    gemini: p.provider_breakdown['gemini'] ?? 0,
   }));
 
   return (
@@ -61,7 +60,6 @@ export default function TimeSeriesPage() {
                 { key: 'openai', name: 'OpenAI', color: 'var(--openai)' },
                 { key: 'anthropic', name: 'Anthropic', color: 'var(--anthropic)' },
                 { key: 'github', name: 'GitHub', color: 'var(--github)' },
-                { key: 'gemini', name: 'Gemini', color: 'var(--gemini)' },
               ]}
               height={280}
               formatter={fmt}

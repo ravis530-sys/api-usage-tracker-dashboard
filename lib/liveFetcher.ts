@@ -2,8 +2,7 @@ import { readKeys } from '@/lib/configStore';
 import { fetchOpenAIUsage } from '@/lib/providers/openai';
 import { fetchAnthropicUsage } from '@/lib/providers/anthropic';
 import { fetchGitHubUsage } from '@/lib/providers/github';
-import { fetchGeminiUsage } from '@/lib/providers/gemini';
-import { normalizeOpenAI, normalizeAnthropic, normalizeGitHub, normalizeGemini } from '@/lib/normalizer';
+import { normalizeOpenAI, normalizeAnthropic, normalizeGitHub } from '@/lib/normalizer';
 import type { APIUsageEvent } from '@/lib/types';
 import { subDays } from 'date-fns';
 
@@ -53,18 +52,6 @@ export async function fetchAllLiveEvents(): Promise<APIUsageEvent[]> {
           liveEvents.push(...normalized);
         }
       }).catch(err => console.error('GitHub fetch error:', err))
-    );
-  }
-
-  const gemKey = keys.find(k => k.provider === 'gemini' && k.is_active);
-  if (gemKey) {
-    fetches.push(
-      fetchGeminiUsage(startDate, endDate).then(payload => {
-        if (payload) {
-          const normalized = normalizeGemini(payload, `acc-${gemKey.key_id}`, 'person-live-1', gemKey.key_id);
-          liveEvents.push(...normalized);
-        }
-      }).catch(err => console.error('Gemini fetch error:', err))
     );
   }
   

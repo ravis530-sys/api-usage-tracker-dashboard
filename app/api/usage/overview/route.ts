@@ -15,7 +15,6 @@ export async function GET(request: NextRequest) {
     const hasOpenAI    = keys.some(k => k.provider === 'openai' && k.is_active);
     const hasAnthropic = keys.some(k => k.provider === 'anthropic' && k.is_active);
     const hasGitHub    = keys.some(k => k.provider === 'github' && k.is_active);
-    const hasGemini    = keys.some(k => k.provider === 'gemini' && k.is_active);
 
     const liveEvents = await fetchAllLiveEvents();
     
@@ -24,7 +23,7 @@ export async function GET(request: NextRequest) {
     
     const result = {
       ...overview,
-      has_keys: { openai: hasOpenAI, anthropic: hasAnthropic, github: hasGitHub, gemini: hasGemini },
+      has_keys: { openai: hasOpenAI, anthropic: hasAnthropic, github: hasGitHub },
     };
 
     await cache.set('cache:overview', result, TTL.OVERVIEW);

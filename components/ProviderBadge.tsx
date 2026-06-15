@@ -6,7 +6,6 @@ const PROVIDER_META: Record<Provider, { label: string; dot: string }> = {
   openai:    { label: 'OpenAI',    dot: 'var(--openai)' },
   anthropic: { label: 'Anthropic', dot: 'var(--anthropic)' },
   github:    { label: 'GitHub',    dot: 'var(--github)' },
-  gemini:    { label: 'Gemini',    dot: 'var(--gemini)' },
 };
 
 export default function ProviderBadge({ provider }: { provider: Provider }) {

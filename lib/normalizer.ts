@@ -14,9 +14,6 @@ const MODEL_COSTS: Record<string, [number, number]> = {
   'claude-3-5-haiku-20241022':     [0.0008,  0.004],
   'copilot-chat':                  [0.0,     0.0],
   'copilot-completions':           [0.0,     0.0],
-  'gemini-1.5-pro':                [0.0035,  0.0105],
-  'gemini-1.5-flash':              [0.00035, 0.00105],
-  'gemini-1.0-pro':                [0.0005,  0.0015],
 };
 
 function calcCost(model: string, tokensIn: number, tokensOut: number): number {
@@ -163,42 +160,6 @@ export function normalizeGitHub(payload: any, accountId: string, personId: strin
         metadata: day
       });
     }
-  }
-  
-  return events;
-}
-
-/**
- * Normalizes Google Gemini usage payload.
- */
-export function normalizeGemini(payload: any, accountId: string, personId: string, apiKeyId: string): APIUsageEvent[] {
-  if (!payload || !Array.isArray(payload.data)) return [];
-  
-  const events: APIUsageEvent[] = [];
-  
-  for (const item of payload.data) {
-    const ts = new Date(item.timestamp || Date.now()).toISOString();
-    const model = item.model || 'gemini-1.5-pro';
-    const tokensIn = item.input_tokens || 0;
-    const tokensOut = item.output_tokens || 0;
-    
-    events.push({
-      event_id: uuidv4(),
-      timestamp: ts,
-      provider: 'gemini',
-      person_id: personId,
-      account_id: accountId,
-      api_key_id: apiKeyId,
-      model_name: model,
-      endpoint: '/v1beta/models',
-      tokens_input: tokensIn,
-      tokens_output: tokensOut,
-      request_count: item.requests || 1,
-      latency_ms: item.latency || 700,
-      status_code: 200,
-      estimated_cost: calcCost(model, tokensIn, tokensOut),
-      metadata: item
-    });
   }
   
   return events;

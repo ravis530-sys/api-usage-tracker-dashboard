@@ -18,7 +18,6 @@ const PROVIDER_COLORS: Record<Provider, string> = {
   openai:    'var(--openai)',
   anthropic: 'var(--anthropic)',
   github:    'var(--github)',
-  gemini:    'var(--gemini)',
 };
 
 export default function DashboardPage() {
@@ -70,7 +69,6 @@ export default function DashboardPage() {
     openai:    p.provider_breakdown['openai']    ?? 0,
     anthropic: p.provider_breakdown['anthropic'] ?? 0,
     github:    p.provider_breakdown['github']    ?? 0,
-    gemini:    p.provider_breakdown['gemini']    ?? 0,
   }));
 
   return (
@@ -151,7 +149,6 @@ export default function DashboardPage() {
             { key: 'openai',    name: 'OpenAI',    color: 'var(--openai)' },
             { key: 'anthropic', name: 'Anthropic', color: 'var(--anthropic)' },
             { key: 'github',    name: 'GitHub',    color: 'var(--github)' },
-            { key: 'gemini',    name: 'Gemini',    color: 'var(--gemini)' },
           ]}
           height={240}
           formatter={fmt}

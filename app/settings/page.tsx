@@ -180,7 +180,6 @@ export default function SettingsPage() {
                         <option value="openai">OpenAI</option>
                         <option value="anthropic">Anthropic</option>
                         <option value="github">GitHub</option>
-                        <option value="gemini">Gemini</option>
                       </select>
                     </div>
                     <div className="form-group">
@@ -265,7 +264,6 @@ export default function SettingsPage() {
                       <option value="openai">OpenAI</option>
                       <option value="anthropic">Anthropic</option>
                       <option value="github">GitHub</option>
-                      <option value="gemini">Gemini</option>
                     </select>
                   </div>
                   <div className="form-group">

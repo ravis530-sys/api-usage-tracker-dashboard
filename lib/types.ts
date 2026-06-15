@@ -1,5 +1,5 @@
 // ─── Provider Types ────────────────────────────────────────────────────────────
-export type Provider = 'openai' | 'anthropic' | 'github' | 'gemini';
+export type Provider = 'openai' | 'anthropic' | 'github';
 
 // ─── Unified API Usage Event ───────────────────────────────────────────────────
 export interface APIUsageEvent {
