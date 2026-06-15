@@ -11,7 +11,7 @@ const fmt     = (n: number) => n >= 1_000_000 ? `${(n/1_000_000).toFixed(1)}M` :
 const fmtCost = (n: number) => `$${n.toFixed(2)}`;
 
 const PROVIDER_COLORS: Record<Provider, string> = {
-  openai: 'var(--openai)', anthropic: 'var(--anthropic)', github: 'var(--github)', gemini: 'var(--gemini)'
+  openai: 'var(--openai)', anthropic: 'var(--anthropic)', github: 'var(--github)'
 };
 const MODEL_COLORS = ['#6366f1','#8b5cf6','#0ea5e9','#10b981','#f59e0b','#ec4899','#ef4444','#a78bfa'];
 
